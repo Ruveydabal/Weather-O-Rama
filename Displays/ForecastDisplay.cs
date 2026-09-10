@@ -11,12 +11,21 @@ namespace ObserverPattern.Displays
     {
         public ForecastDisplay(Subject weatherData) : base(weatherData) 
         { 
-            // Set the field and register itself with the weatherdata subject
+            
         }
 
         public override void Display()
         {
-            throw new NotImplementedException();
+            if (Temprature > 25 &&  Humidity < 50)
+            {
+                Console.WriteLine("Mooi weer komt er aan!");
+
+            }
+            else
+            {
+                Console.WriteLine("Trek je paraplu's uit de kast!");
+            }
+
         }
     }
 }

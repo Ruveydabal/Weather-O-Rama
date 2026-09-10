@@ -10,18 +10,30 @@ namespace ObserverPattern.Displays
     internal class StatisticsDisplay : WeatherDisplay
 
     {
-        private float sumTemperature = 0;
-        private float maxTemp = 0;
-        private float minTemp = 0;
+        private List <float> sumTemperature = new List<float> ();
+        private float maxTemp = int.MinValue;
+        private float minTemp = int.MaxValue;
         private int countUpdated = 0;
         public StatisticsDisplay(Subject weatherData) : base(weatherData) 
         { 
-            // Set the field and register itself with the weatherdata subject
+           
         }
 
         public override void Display()
         {
-            throw new NotImplementedException();
+            if (Temprature > maxTemp)
+            {
+                maxTemp = Temprature;
+            }
+
+            if(Temprature < minTemp || countUpdated == 0 && minTemp == 0)
+            {
+                minTemp = Temprature;
+            }
+
+            sumTemperature.Add(Temprature);
+            countUpdated++;
+            Console.WriteLine($"Avg/max/min: {sumTemperature}/{maxTemp}/{minTemp}");
         }
     }
 }

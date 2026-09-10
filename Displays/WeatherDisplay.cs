@@ -15,6 +15,9 @@ namespace ObserverPattern.Displays
         private float pressure;
         private Subject weatherData;
 
+        public float Temprature {get {return temprature;  } }
+        public float Humidity {get { return humidity; } }
+        public float Pressure { get { return pressure; } }
         public WeatherDisplay(Subject weatherData)
         {
             this.weatherData = weatherData;
